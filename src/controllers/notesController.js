@@ -44,7 +44,7 @@ export const updateNote = async (req, res) => {
     noteId,
     req.body,
     {
-      new: true,
+      returnDocument: 'after'
     },
   );
 
