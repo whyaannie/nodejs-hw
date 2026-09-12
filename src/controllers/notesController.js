@@ -36,7 +36,7 @@ export const getAllNotes = async (req, res, next) => {
     }
 
     const [totalNotes, notes] = await Promise.all([
-      Note.countDocuments(query),
+      Note.where()(query),
       Note.find(query)
         .skip(skip)
         .limit(perPage),
