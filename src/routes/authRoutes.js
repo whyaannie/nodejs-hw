@@ -32,19 +32,19 @@ router.post(
 );
 
 router.post(
-  '/register',
+  '/auth/register',
   celebrate(registerUserSchema),
   registerUser,
 );
 
 router.post(
-  '/login',
+  '/auth/login',
   celebrate(loginUserSchema),
   loginUser,
 );
 
-router.post('/refresh', refreshUserSession);
+router.post('/auth/refresh', refreshUserSession);
 
-router.post('/logout', logoutUser);
+router.post('/auth/logout', logoutUser);
 
 export default router;

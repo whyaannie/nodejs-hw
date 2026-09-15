@@ -31,8 +31,6 @@ app.use(notFoundHandler);
 app.use(errors());
 app.use(errorHandler);
 
-app.use(authRoutes);
-
 const startServer = async () => {
   await connectMongoDB();
 
