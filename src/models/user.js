@@ -6,16 +6,23 @@ const userSchema = new Schema(
       type: String,
       trim: true,
     },
+
     email: {
       type: String,
-      required: true,
       unique: true,
+      required: true,
       trim: true,
     },
+
     password: {
       type: String,
       required: true,
       minlength: 8,
+    },
+
+    avatar: {
+      type: String,
+      default: 'https://ac.goit.global/fullstack/react/default-avatar.jpg',
     },
   },
   {
@@ -30,7 +37,7 @@ userSchema.methods.toJSON = function () {
 };
 
 userSchema.pre('save', function (next) {
-  if (!this.username) {
+  if (this.isNew && !this.username) {
     this.username = this.email;
   }
 
@@ -39,4 +46,4 @@ userSchema.pre('save', function (next) {
 
 const User = model('User', userSchema);
 
-export default User;
+export { User };
